@@ -1,8 +1,32 @@
 <% provide(:title, "Home") %>
 <div class="center jumbotron">
-	<h1>Welcome to Incubus Music Search and Recommendation Engine</h1>
-	<h2>
-		This is the home page Incubus!
-	</h2>
-	<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+	<% if !logged_in? %>
+		<h1>Welcome to Incubus Music Search and Recommendation Engine</h1>
+		<h2>
+			This is the home page Incubus!
+		</h2>
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+
+	<% else %>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<%= form_tag(search_path, method: :get) do %>
+					<%= text_field_tag(:search, params[:search], class: 'form-control') %>
+					<%= submit_tag("Search!", class: "btn btn-lg btn-primary") %>
+				<% end %>
+			</div>
+			<% artist_info = search_api() %>
+			<div class="col-md-6 col-md-offset-3">
+				<% if params.key?(:search) %>
+
+					<% if artist_info["error"] == 6 %>
+						<h1><%= artist_info["message"] %></h1>
+					<% else %>
+						<h2><%= artist_info["artist"]["name"] %></h2>
+						<%= image_tag(artist_info["artist"]["image"][3]["#text"]) %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+  	<% end %>
 </div>

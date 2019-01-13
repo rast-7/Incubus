@@ -51,7 +51,17 @@
 								<%= songs["toptracks"]["track"][i]["name"] %>
 							</div>
 						<% end %>
-					</div>		
+					</div>	
+					<div class="row">
+						<h2><strong> Popular Albums </strong></h2>
+						<% albums = search_albums %>
+						<% for i in 0..5 %>
+						<div class="col-md-2">
+								<%= image_tag albums["topalbums"]["album"][i]["image"][1]["#text"] %><br>
+								<%= albums["topalbums"]["album"][i]["name"] %>
+						</div>
+						<% end %>
+					</div>	
 
 					<% end %>
 				<% end %>

@@ -30,3 +30,5 @@ In order to run the test, follow the below command:
 rails test
 ```
 
+The app is hosted on heroku and here is the link:
+()[https://thawing-anchorage-59327.herokuapp.com]

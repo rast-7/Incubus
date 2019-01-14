@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190110111556) do
+ActiveRecord::Schema.define(version: 20190114083210) do
+
+  create_table "histories", force: :cascade do |t|
+    t.string "artist"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "histories_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "history_id", null: false
+    t.index ["history_id", "user_id"], name: "index_histories_users_on_history_id_and_user_id"
+    t.index ["user_id", "history_id"], name: "index_histories_users_on_user_id_and_history_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

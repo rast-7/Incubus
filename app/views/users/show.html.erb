@@ -7,3 +7,11 @@
 		</h1>
 	</aside>
 </div>
+<div class="center">
+	<h2><strong>Search History</strong></h2>
+	<% search_history = history @user %>
+	<% search_history.each do |artist| %>
+		<%= artist %>
+		<br>
+	<% end %>
+</div>

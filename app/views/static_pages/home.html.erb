@@ -21,6 +21,8 @@
 					<% if artist_info["error"] == 6 %>
 						<h1><%= artist_info["message"] %></h1>
 					<% else %>
+						<% insert_artist %>
+						<% add_to_history %>
 						<br>
 						<h2> <strong><%= artist_info["artist"]["name"] %></strong> </h2>
 						<%=	image_tag(artist_info["artist"]["image"][2]["#text"]) %>

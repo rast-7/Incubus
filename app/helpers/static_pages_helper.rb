@@ -18,4 +18,16 @@ module StaticPagesHelper
 		response = HTTParty.get(url)
 		popular_albums = JSON.parse(response.body)
 	end
+
+	def insert_artist
+		user_logged_in = current_user
+		if !History.find_by(artist: @artist.downcase)
+			History.create(artist: @artist.downcase)
+		end
+	end
+
+	def add_to_history
+		user_logged_in = current_user
+		user_logged_in.histories << History.find_by(artist: @artist)
+	end
 end

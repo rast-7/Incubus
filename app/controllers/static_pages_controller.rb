@@ -10,7 +10,7 @@ class StaticPagesController < ApplicationController
   end
 
   def search
-    @artist = params[:search]
+    @artist = params[:search].downcase
     render 'home'
   end
 

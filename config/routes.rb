@@ -9,6 +9,5 @@ Rails.application.routes.draw do
 	get '/login', to: 'sessions#new'
 	post 'login', to: 'sessions#create'
 	delete '/logout', to: 'sessions#destroy'
-	get '/500', to: 'errors#internal_error'
 	resources :users	
 end

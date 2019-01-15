@@ -22,4 +22,5 @@
 
 .byebug_history
 
-/config/secrets.ymlsecrets.yml
+/config/secrets.yml
+secrets.yml
